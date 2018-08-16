@@ -53,6 +53,8 @@ http://localhost:4001/api/v1/employees/
 
 
 Rotas: 
+GET - api/v1/reports/employees/ (Listar Relatorio de Funcionarios) 
+
 GET - api/v1/employees/ (Listar Funcionarios) 
 
 GET - api/v1/employee/{id} (Detalhar Funcionario) 
