@@ -22,7 +22,8 @@ class usersApiTest extends TestCase
     {   
         $this->put('/api/v1/user/1',[     
                                             "name" => null,
-                                            "email" => "email@tal.com",
+                                            "last_name" => "Sobre nome",
+                                            "age" => 14,
                                     ])
                 ->assertStatus(400)
                 ->assertJson([
@@ -34,21 +35,23 @@ class usersApiTest extends TestCase
     {   
         $this->put('/api/v1/user/1',[     
                                             "name" => 'mudando nome',
-                                            "email" => null,
+                                            "last_name" => null,
+                                            "age" => 10,
                                     ])
                 ->assertStatus(400)
                 ->assertJson([
-                                'message' => "Preencha o E-mail" 
+                                'message' => "Preencha o Sobre Nome" 
                             ]);
     }
     
     public function test_update_item()
     {   
         $this->put('/api/v1/user/1',[     
-                                                "id" => "1",
-                                                "email" => "emailmudei@tal.com",
-                                                "name" => "name di admin",
-                                            ])
+                                        'name' => 'Silvana',
+                                        'last_name' => 'Silva',
+                                        'age' => '25',
+                                        'genre' => 'F',
+                                        ])
                 ->assertStatus(200)
                 ->assertJson([
                                 'message' => 'Funcionario editado com sucesso' 
@@ -57,9 +60,11 @@ class usersApiTest extends TestCase
     public function test_create_item()
     {   
         $this->post('/api/v1/user/',[     
-                                    "email" => "novoemail@tal.com",
-                                    "name" => "novo usuario",
-                                    ])
+                                    'name' => 'Segunda',
+                                    'last_name' => 'Marques',
+                                    'age' => '25',
+                                    'genre' => 'F',
+                                   ])
                 ->assertStatus(200)
                 ->assertJson([
                                 'message' => 'Funcionario criado com sucesso' 
@@ -84,8 +89,8 @@ class usersApiTest extends TestCase
                                             ])
                 ->assertStatus(200)
                 ->assertJson([
-                                "name" => "admin",
-                                "email" => "admin@tal.com.br",
+                                "name" => "Silvana",
+                                "last_name" => "Silva",
                              ]);
     }
     public function test_list_two_items()
@@ -94,10 +99,10 @@ class usersApiTest extends TestCase
 
         $this->get('/api/v1/users/',[])
                 ->assertStatus(200)
-                ->assertSeeText('admin')
-                ->assertSeeText('novo usuario')
-                ->assertSeeText('admin@tal.com.br')
-                ->assertSeeText('novoemail@tal.com');
+                ->assertSeeText('Silvana')
+                ->assertSeeText('Segunda')
+                ->assertSeeText('Silva')
+                ->assertSeeText('Marques');
                
     }
 

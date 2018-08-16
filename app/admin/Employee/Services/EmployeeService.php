@@ -4,7 +4,7 @@ namespace Admin\Employee\Services;
 
 use Admin\Employee\Models\EmployeeModel;
 
-class employeeService
+class EmployeeService
 {
     private $employeeModel = null;
     

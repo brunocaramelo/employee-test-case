@@ -18,10 +18,12 @@ class EmployeeRepository
         $query = $this->employee->select(
                                 'us.id as id',
                                 'us.name as name',
-                                'us.email as email'
+                                'us.last_name as last_name',
+                                'us.genre as genre',
+                                'us.age as age'
                                 )
-                            ->from('users AS us')
-                            ->where( 'us.excluded' , '=' , '0' );
+                            ->from('employee AS us')
+                            ->where( 'us.status' , '=' , '1' );
         return $query;
     }
 

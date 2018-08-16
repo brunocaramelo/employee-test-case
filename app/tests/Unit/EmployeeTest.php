@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Artisan as Artisan;
 
 use Admin\Employee\Services\EmployeeService;
 
-class ProductTest extends TestCase
+class EmployeeTest extends TestCase
 {
     public function setUp(){
         parent::setUp();
@@ -25,11 +25,11 @@ class ProductTest extends TestCase
     public function test_list_prod_default()
     {
         $expected = [  [  
-                            'id' => '1',
+                            'id' => 1,
                             'name' => 'Silvana',
                             'last_name' => 'Silva',
                             'age' => '25',
-                            'genre' => 'F',
+                            'genre' => 'F'
                         ]
                     ];
         $userService = new EmployeeService();
@@ -45,6 +45,7 @@ class ProductTest extends TestCase
                         'last_name' => 'Silva MUDEI',
                         'age' => '25',
                         'genre' => 'F',
+                        'status' => 1
                     ];
         $params =  [  
                         'id' => '1',
@@ -52,6 +53,7 @@ class ProductTest extends TestCase
                         'last_name' => 'Silva MUDEI',
                         'age' => '25',
                         'genre' => 'F',
+                        'status' => 1
                     ];
         $userService = new EmployeeService();
         $userService->update( '1' , $params );
@@ -83,7 +85,7 @@ class ProductTest extends TestCase
         $expected =[   
                         'id' => '1',
                         'name' => 'Silvana',
-                        'last_name' => 'Silva MUDEI',
+                        'last_name' => 'Silva',
                         'age' => '25',
                         'genre' => 'F',
                         'status' => 0
@@ -122,6 +124,7 @@ class ProductTest extends TestCase
                         'last_name' => 'Segundo',
                         'age' => '40',
                         'genre' => 'M',
+                        'status' => '1',
                     ];
         $prodService = new EmployeeService();
         $prodService->create( $expected );
