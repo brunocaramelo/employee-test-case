@@ -54,8 +54,12 @@ http://localhost:4001/api/v1/employees/
 
 Rotas: 
 GET - api/v1/employees/ (Listar Funcionarios) 
+
 GET - api/v1/employee/{id} (Detalhar Funcionario) 
+
 PUT - api/v1/employee/{id} (Editar Funcionario) 
+
 POST - api/v1/employee/ (Criar Funcionario ) 
+
 DELETE - api/v1/employee/{id} (Excluir Funcionario)
 
