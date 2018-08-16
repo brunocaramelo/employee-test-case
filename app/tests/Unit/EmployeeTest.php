@@ -1,11 +1,6 @@
 <?php
 namespace Tests\Feature;
-/*
- 'name', 
-'last_name', 
-'age',
-'genre',
-'status',*/
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

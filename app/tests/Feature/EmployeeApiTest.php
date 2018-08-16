@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan as Artisan;
 
 
-class usersApiTest extends TestCase
+class EmployeeApiTest extends TestCase
 {
     public function setUp(){
         parent::setUp();
