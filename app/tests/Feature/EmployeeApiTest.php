@@ -20,7 +20,7 @@ class EmployeeApiTest extends TestCase
 
     public function test_fail_update_item()
     {   
-        $this->put('/api/v1/user/1',[     
+        $this->put('/api/v1/employee/1',[     
                                             "name" => null,
                                             "last_name" => "Sobre nome",
                                             "age" => 14,
@@ -33,7 +33,7 @@ class EmployeeApiTest extends TestCase
 
     public function test_fail_create_item()
     {   
-        $this->put('/api/v1/user/1',[     
+        $this->put('/api/v1/employee/1',[     
                                             "name" => 'mudando nome',
                                             "last_name" => null,
                                             "age" => 10,
@@ -46,7 +46,7 @@ class EmployeeApiTest extends TestCase
     
     public function test_update_item()
     {   
-        $this->put('/api/v1/user/1',[     
+        $this->put('/api/v1/employee/1',[     
                                         'name' => 'Silvana',
                                         'last_name' => 'Silva',
                                         'age' => '25',
@@ -59,7 +59,7 @@ class EmployeeApiTest extends TestCase
     }
     public function test_create_item()
     {   
-        $this->post('/api/v1/user/',[     
+        $this->post('/api/v1/employee/',[     
                                     'name' => 'Segunda',
                                     'last_name' => 'Marques',
                                     'age' => '25',
@@ -73,7 +73,7 @@ class EmployeeApiTest extends TestCase
 
     public function test_remove_item()
     {   
-        $this->delete('/api/v1/user/1',[     
+        $this->delete('/api/v1/employee/1',[     
                                                 "id" => "1",
                                         ])
                 ->assertStatus(200)
@@ -84,7 +84,7 @@ class EmployeeApiTest extends TestCase
 
     public function test_edit_item()
     {   
-        $this->get('/api/v1/user/1',[     
+        $this->get('/api/v1/employee/1',[     
                                                 "id" => "1",
                                             ])
                 ->assertStatus(200)
@@ -97,7 +97,7 @@ class EmployeeApiTest extends TestCase
     {   
         $this->test_create_item();
 
-        $this->get('/api/v1/users/',[])
+        $this->get('/api/v1/employees/',[])
                 ->assertStatus(200)
                 ->assertSeeText('Silvana')
                 ->assertSeeText('Segunda')

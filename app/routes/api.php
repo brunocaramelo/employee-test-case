@@ -19,33 +19,33 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () 
 {
-    Route::group(['prefix' => 'users'], function () 
+    Route::group(['prefix' => 'employees'], function () 
     {
         Route::get('/',
-                        [ 'as' => 'users-list', 
+                        [ 'as' => 'employees-list', 
                         'uses' => '\Admin\Employee\Controllers\EmployeeController@listAll' 
                     ]);
 
     });
 
-    Route::group(['prefix' => 'user'], function () 
+    Route::group(['prefix' => 'employee'], function () 
     {
         Route::post('/',
-                            [ 'as' => 'create-user', 
+                            [ 'as' => 'create-employee', 
                             'uses' => '\Admin\Employee\Controllers\EmployeeController@create' 
                             ]);
         Route::get('/{id}',
-                            [ 'as' => 'view-user', 
+                            [ 'as' => 'view-employee', 
                             'uses' => '\Admin\Employee\Controllers\EmployeeController@findById' 
                             ]);
 
         Route::put('/{id}',
-                            [ 'as' => 'update-user', 
+                            [ 'as' => 'update-employee', 
                             'uses' => '\Admin\Employee\Controllers\EmployeeController@update' 
                             ]);
 
         Route::delete('/{id}',
-                            [ 'as' => 'delete-user', 
+                            [ 'as' => 'delete-employee', 
                             'uses' => '\Admin\Employee\Controllers\EmployeeController@remove' 
                             ]);
 
