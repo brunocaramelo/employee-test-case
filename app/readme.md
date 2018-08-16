@@ -27,11 +27,11 @@ para gerencimento de ambientes com o uso de:
     
     1 - sudo docker-compose up -d;
 
-    2 - sudo docker exec -t php /var/www/html/artisan migrate;
+    2 - sudo docker exec -t php-emp /var/www/html/artisan migrate;
 
-    3 - sudo docker exec -t php /var/www/html/artisan db:seed;
+    3 - sudo docker exec -t php-emp /var/www/html/artisan db:seed;
 
-    4 - sudo docker exec -t php phpunit;
+    4 - sudo docker exec -t php-emp phpunit;
 
     1 -  para que as imagens sejam armazenandas e executadas e subir as instancias
     
@@ -45,7 +45,7 @@ para gerencimento de ambientes com o uso de:
      
 O mesmo pode ser rodado em uma unica vez com o comando:
 
-        sudo docker-compose up -d; sudo docker exec -t php /var/www/html/artisan migrate; sudo docker exec -t php /var/www/html/artisan db:seed; sudo docker exec -t php phpunit;
+        sudo docker-compose up -d; sudo docker exec -t php-emp /var/www/html/artisan migrate; sudo docker exec -t php-emp /var/www/html/artisan db:seed; sudo docker exec -t php-emp phpunit;
 
 APOS RODAR A aplicação estara disponivel em 
 
