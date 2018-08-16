@@ -1,9 +1,9 @@
 <?php
 
-namespace Admin\User\Validators;
+namespace Admin\Employee\Validators;
 use Validator;
 
-class UserValidator{
+class EmployeeValidator{
     
     private $redirect = false;
     private $messages = false;
@@ -17,16 +17,18 @@ class UserValidator{
     public function validateCreate( $fields )
     {
       return $this->make( $fields , [
-                                        'email' => 'required|unique:users,email',
+                                        'last_name' => 'required',
                                         'name' => 'required',
+                                        'age' => 'required',
                                     ]);
     }
 
     public function validateUpdate( $fields )
     {
        return $this->make( $fields , [
-                                        'email' => 'required',
+                                        'last_name' => 'required',
                                         'name' => 'required',
+                                        'age' => 'required',
                                     ]);
     }
 
@@ -41,8 +43,8 @@ class UserValidator{
     private function setMessages()
     {
         $this->messages = [
-                            'email.required'=>'Preencha o E-mail',
-                            'email.unique'=>'E-mail já esta em uso',
+                            'last_name.required'=>'Preencha o Sobre Nome',
+                            'age.required'=>'Preencha a Idade',
                             'name.required'=>'Preencha o Nome',
                             ];
     }

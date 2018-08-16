@@ -3,20 +3,20 @@ version: '2'
 services:
   mysql:
     image: mariadb:latest
-    container_name: mysql-host
+    container_name: mysql-emp
     volumes:
       - mysql-data:/var/lib/mysql
     ports: 
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=testes
-      - MYSQL_DATABASE=user_admin
+      - MYSQL_DATABASE=employee_admin
       - MYSQL_USER=sandbox
       - MYSQL_PASSWORD=sandbox
       
   redis:
     image: redis:alpine
-    container_name: redis
+    container_name: redis-emp
     volumes:
       - redis-data:/data
 
@@ -24,7 +24,7 @@ services:
     build:
       context: ./docker/php7-fpm
     image: laravel:php-fpm
-    container_name: php
+    container_name: php-emp
     depends_on:
       - redis
       - mysql
@@ -32,7 +32,7 @@ services:
     environment:
       DB_PORT: 3306
       DB_USERNAME: root
-      DB_DATABASE: user_admin
+      DB_DATABASE: employee_admin
       DB_PASSWORD: testes
       DB_HOST: mysql
       MYSQL_HOST: mysql
@@ -47,7 +47,7 @@ services:
 
   web:
     image: nginx:alpine
-    container_name: nginx
+    container_name: nginx-emp
     depends_on:
       - php
     volumes_from:

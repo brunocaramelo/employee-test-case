@@ -1,14 +1,14 @@
 <?php
 
-namespace Admin\User\Controllers;
+namespace Admin\Employee\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Admin\User\Services\UserService;
-use Admin\User\Exceptions\UserEditException;
+use Admin\Employee\Services\EmployeeService;
+use Admin\Employee\Exceptions\EmployeeEditException;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     public function __construct()
     {
@@ -16,13 +16,13 @@ class UserController extends Controller
   
     public function listAll()
     {
-        $service = new UserService();
+        $service = new EmployeeService();
         return response()->json( $service->getList() );
     }
     
     public function findById( Request $request )
     {
-        $service = new UserService();
+        $service = new EmployeeService();
         return response()->json( $service->edit( $request->id ) );
     }
 
@@ -31,12 +31,12 @@ class UserController extends Controller
         $return = ['status' => '200','message'=> null,'data'=> null];
         try{        
             \DB::beginTransaction();
-            $service = new UserService();
+            $service = new EmployeeService();
             $service->update( $request->id , $request->all() );
             \DB::commit();
-            $return['message'] = 'Usuario editado com sucesso';
+            $return['message'] = 'Funcionario editado com sucesso';
             return response()->json( $return );
-        }catch( UserEditException $error ){
+        }catch( EmployeeEditException $error ){
             \DB::rollback();
             $return['status'] = 400;
             $return['message'] = $error->getMessage();
@@ -49,12 +49,12 @@ class UserController extends Controller
         $return = ['status' => '200','message'=> null,'data'=> null];
         try{        
             \DB::beginTransaction();
-            $service = new UserService();
+            $service = new EmployeeService();
             $service->remove( $request->id );
             \DB::commit();
-            $return['message'] = 'Usuario excluido com sucesso';
+            $return['message'] = 'Funcionario excluido com sucesso';
             return response()->json( $return );
-        }catch( UserEditException $error ){
+        }catch( EmployeeEditException $error ){
             \DB::rollback();
             $return['status'] = 400;
             $return['message'] = $error->getMessage();
@@ -67,12 +67,12 @@ class UserController extends Controller
         $return = ['status' => '200','message'=> null,'data'=> null];
         try{        
             \DB::beginTransaction();
-            $service = new UserService();
+            $service = new EmployeeService();
             $service->create( $request->all() );
-            $return['message'] = 'Usuario criado com sucesso';
+            $return['message'] = 'Funcionario criado com sucesso';
             \DB::commit();
             return response()->json( $return );
-        }catch( UserEditException $error ){
+        }catch( EmployeeEditException $error ){
             \DB::rollback();
             $return['status'] = 400;
             $return['message'] = $error->getMessage();

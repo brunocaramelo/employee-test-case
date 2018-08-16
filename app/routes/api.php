@@ -23,7 +23,7 @@ Route::group(['prefix' => 'v1'], function ()
     {
         Route::get('/',
                         [ 'as' => 'users-list', 
-                        'uses' => '\Admin\User\Controllers\UserController@listAll' 
+                        'uses' => '\Admin\Employee\Controllers\EmployeeController@listAll' 
                     ]);
 
     });
@@ -32,21 +32,21 @@ Route::group(['prefix' => 'v1'], function ()
     {
         Route::post('/',
                             [ 'as' => 'create-user', 
-                            'uses' => '\Admin\User\Controllers\UserController@create' 
+                            'uses' => '\Admin\Employee\Controllers\EmployeeController@create' 
                             ]);
         Route::get('/{id}',
                             [ 'as' => 'view-user', 
-                            'uses' => '\Admin\User\Controllers\UserController@findById' 
+                            'uses' => '\Admin\Employee\Controllers\EmployeeController@findById' 
                             ]);
 
         Route::put('/{id}',
                             [ 'as' => 'update-user', 
-                            'uses' => '\Admin\User\Controllers\UserController@update' 
+                            'uses' => '\Admin\Employee\Controllers\EmployeeController@update' 
                             ]);
 
         Route::delete('/{id}',
                             [ 'as' => 'delete-user', 
-                            'uses' => '\Admin\User\Controllers\UserController@remove' 
+                            'uses' => '\Admin\Employee\Controllers\EmployeeController@remove' 
                             ]);
 
     });

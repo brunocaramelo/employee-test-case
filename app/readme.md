@@ -18,7 +18,7 @@ para gerencimento de ambientes com o uso de:
     - web / nginx
 
 1- Baixar repositório 
-    - git clone https://github.com/brunocaramelo/queue-test.git
+    - git clone https://github.com/brunocaramelo/employee-test-case.git
 
 2 - VERIFICAR  SE AS PORTAS 4001 E 3306 ESTÃO OCUPADAS,
 
@@ -26,8 +26,11 @@ para gerencimento de ambientes com o uso de:
 3 - ENTRAR NO DIRETORIO BASE DA APLICACAO RODAR OS COMANDOS 
     
     1 - sudo docker-compose up -d;
+
     2 - sudo docker exec -t php /var/www/html/artisan migrate;
+
     3 - sudo docker exec -t php /var/www/html/artisan db:seed;
+
     4 - sudo docker exec -t php phpunit;
 
     1 -  para que as imagens sejam armazenandas e executadas e subir as instancias
@@ -41,11 +44,13 @@ para gerencimento de ambientes com o uso de:
         - testes de unidade
      
 O mesmo pode ser rodado em uma unica vez com o comando:
+
         sudo docker-compose up -d; sudo docker exec -t php /var/www/html/artisan migrate; sudo docker exec -t php /var/www/html/artisan db:seed; sudo docker exec -t php phpunit;
 
 APOS RODAR A aplicação estara disponivel em 
 
 http://localhost:4001/api/v1/users/
+
 
 Rotas: 
 GET - api/v1/users/ (Listar Usuario) 

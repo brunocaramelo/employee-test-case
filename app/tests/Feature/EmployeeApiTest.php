@@ -51,7 +51,7 @@ class usersApiTest extends TestCase
                                             ])
                 ->assertStatus(200)
                 ->assertJson([
-                                'message' => 'Usuario editado com sucesso' 
+                                'message' => 'Funcionario editado com sucesso' 
                             ]);
     }
     public function test_create_item()
@@ -62,7 +62,7 @@ class usersApiTest extends TestCase
                                     ])
                 ->assertStatus(200)
                 ->assertJson([
-                                'message' => 'Usuario criado com sucesso' 
+                                'message' => 'Funcionario criado com sucesso' 
                             ]);
     }
 
@@ -73,7 +73,7 @@ class usersApiTest extends TestCase
                                         ])
                 ->assertStatus(200)
                 ->assertJson([
-                                'message' => 'Usuario excluido com sucesso' 
+                                'message' => 'Funcionario excluido com sucesso' 
                             ]);
     }
 
