@@ -28,6 +28,15 @@ Route::group(['prefix' => 'v1'], function ()
 
     });
 
+    Route::group(['prefix' => 'reports'], function () 
+    {
+        Route::get('/employees',
+                        [ 'as' => 'report-employes', 
+                        'uses' => '\Admin\Reports\Controllers\EmployeeReportController@getReport' 
+                    ]);
+
+    });
+
     Route::group(['prefix' => 'employee'], function () 
     {
         Route::post('/',
