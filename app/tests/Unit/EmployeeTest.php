@@ -19,14 +19,8 @@ class EmployeeTest extends TestCase
 
     public function test_list_prod_default()
     {
-        $expected = [  [  
-                            'id' => 1,
-                            'name' => 'Silvana',
-                            'last_name' => 'Silva',
-                            'age' => '25',
-                            'genre' => 'F'
-                        ]
-                    ];
+        $expected =  $this->return_list_seed_result();
+                    
         $userService = new EmployeeService();
        
         $this->assertEquals( $userService->getList()->toArray() , $expected );
@@ -114,37 +108,30 @@ class EmployeeTest extends TestCase
     public function test_create_prod()
     {
         $expected = [       
-                        'id' => '2',
                         'name' => 'Antonio',
-                        'last_name' => 'Segundo',
-                        'age' => '40',
+                        'last_name' => 'Last',
+                        'age' => '50',
                         'genre' => 'M',
                         'status' => '1',
                     ];
         $prodService = new EmployeeService();
-        $prodService->create( $expected );
-        $final = $prodService->edit( 2 )->toArray();
-        $expected['id'] = 2;
+        $last = $prodService->create( $expected );
+        $final = $prodService->edit( $last->id )->toArray();
+        $expected['id'] = $last->id;
         $this->assertEquals( $final , $expected );
     }
 
 
     public function test_list_prod_filter_after_create()
     {
-        $expected = [
-                        '0' => [      'id' => '1',
-                                        'name' => 'Silvana',
-                                        'last_name' => 'Silva',
-                                        'age' => '25',
-                                        'genre' => 'F',
-                                ],
-                        '1' => [        
-                                    'id' => '2',
-                                    'name' => 'Antonio',
-                                    'last_name' => 'Segundo',
-                                    'age' => '40',
-                                    'genre' => 'M',
-                                ]
+        $expected = $this->return_list_seed_result();
+
+        $expected[] = [        
+                        'id' => '6',
+                        'name' => 'Antonio',
+                        'last_name' => 'Last',
+                        'age' => '50',
+                        'genre' => 'M',
                     ];
         $this->test_create_prod();
 
@@ -156,5 +143,46 @@ class EmployeeTest extends TestCase
     {
         Artisan::call('migrate:reset');
         parent::tearDown();
+    }
+
+    private function return_list_seed_result()
+    {
+        return [
+            '0' => [      'id' => '1',
+                            'name' => 'Silvana',
+                            'last_name' => 'Silva',
+                            'age' => '25',
+                            'genre' => 'F',
+                    ],
+            '1' => [        
+                        'id' => '2',
+                        'name' => 'Segunda',
+                        'last_name' => 'Segunda',
+                        'age' => '50',
+                        'genre' => 'F',
+                    ],
+            '2' => [        
+                        'id' => '3',
+                        'name' => 'Quarta',
+                        'last_name' => 'Quarta',
+                        'age' => '45',
+                        'genre' => 'F',
+            ],
+            '3' => [        
+                        'id' => '4',
+                        'name' => 'Quinto',
+                        'last_name' => 'Mais Velho',
+                        'age' => '65',
+                        'genre' => 'M',
+            ],
+            '4' => [        
+                        'id' => '5',
+                        'name' => 'Sexto',
+                        'last_name' => 'Mais Novo',
+                        'age' => '18',
+                        'genre' => 'M',
+            ],
+        ];
+        
     }
 }
